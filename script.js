@@ -71,7 +71,6 @@ function preencherSelectTexturas() {
 async function mostrarTexturaOriginal(textura) {
   try {
       const url = `textures/blocks/${textura}.png`;
-      texturaOriginal.innerHTML = `<img src="${url}" alt="Textura Original" onerror="this.src='placeholder.png'">`;
       texturaAtual = textura;
   } catch (err) {
       console.error('Erro ao mostrar textura original:', err);
@@ -164,7 +163,6 @@ botaoDownload.addEventListener('click', async () => {
       };
       zip.file("pack.mcmeta", JSON.stringify(packMcmeta, null, 4));
 
-
       const packIconCanvas = document.createElement('canvas');
       packIconCanvas.width = 128;
       packIconCanvas.height = 128;
@@ -174,10 +172,12 @@ botaoDownload.addEventListener('click', async () => {
       const packIconBlob = await new Promise(resolve => packIconCanvas.toBlob(resolve));
       zip.file("pack.png", packIconBlob);
 
+      // Cria a estrutura de pastas correta
       const assetsFolder = zip.folder("assets");
       const minecraftFolder = assetsFolder.folder("minecraft");
       const texturesFolder = minecraftFolder.folder("textures");
-      const blocksFolder = texturesFolder.folder("block"); 
+      const blocksFolder = texturesFolder.folder("block");
+
 
       for (const [textura, imagem] of Object.entries(texturasSubstituidas)) {
           const blob = await new Promise((resolve) => {
@@ -198,6 +198,7 @@ botaoDownload.addEventListener('click', async () => {
           blocksFolder.file(`${textura}.png`, blob);
       }
 
+      // Gera o arquivo .zip e inicia o download
       const content = await zip.generateAsync({ type: "blob" });
       saveAs(content, "minecraft_texture_pack.zip");
   } catch (err) {
