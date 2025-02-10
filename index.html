@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Texture Swapper</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Minecraft Texture Swapper</h1>
+
+        <div class="controls">
+            <select id="textura">
+                <option value=""></option>
+            </select>
+
+            <input type="file" id="imagem" accept="image/*">
+            <button id="botao-adicionar" disabled>Adicionar Textura</button>
+        </div>
+
+        <div class="preview-container">
+        
+
+            <div class="preview-box">
+                <h3>Textura Nova</h3>
+                <div id="textura-substituida"></div>
+            </div>
+        </div>
+
+        <div class="alteracoes">
+            <h3>Alterações Pendentes</h3>
+            <div id="lista-alteracoes" class="lista-alteracoes"></div>
+        </div>
+
+        <button id="botao-download">Download do Pack</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
