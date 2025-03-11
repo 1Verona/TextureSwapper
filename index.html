@@ -13,15 +13,34 @@
         <h1>Minecraft Texture Swapper</h1>
 
         <div class="controls">
-            <select id="textura">
-                <option value=""></option>
-            </select>
+            <div class="control-group">
+                <label for="versao">Versão do Minecraft:</label>
+                <select id="versao">
+                    <option value="1.19+">1.19+</option>
+                    <option value="pre-1.19">pré-1.19</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="textura">Selecione uma textura:</label>
+                <select id="textura">
+                    <option value="">Selecione uma textura</option>
+                </select>
+            </div>
 
-            <input type="file" id="imagem" accept="image/*">
+            <div class="control-group">
+                <label for="imagem">Escolha uma imagem:</label>
+                <input type="file" id="imagem" accept="image/*">
+            </div>
+            
             <button id="botao-adicionar" disabled>Adicionar Textura</button>
         </div>
 
-<div class="preview-container">
+        <div class="preview-container">
+            <div class="preview-box">
+                <h3>Textura Original</h3>
+                <div id="textura-original"></div>
+            </div>
 
             <div class="preview-box">
                 <h3>Textura Nova</h3>
